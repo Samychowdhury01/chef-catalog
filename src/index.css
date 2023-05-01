@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-solid{
+    @apply btn bg-orange-400 border-orange-400 hover:bg-transparent hover:text-orange-400 hover:border-orange-500 transition-all delay-500 ease-linear
+}
+.btn-outline{
+    @apply btn rounded-2xl bg-transparent border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white hover:border-orange-500 transition-all delay-300 ease-linear
+}
