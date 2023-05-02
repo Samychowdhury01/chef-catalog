@@ -19,18 +19,18 @@ const Header = () => {
             {/* Style will be inherited from the parent element */}
             <Typewriter
               words={["Chef's Catalog - Discover the Joy of Cooking"]}
-              loop={true}
+              loop={5}
               cursor
               cursorStyle="|"
               typeSpeed={100}
-              deleteSpeed={50}
+              deleteSpeed={70}
               delaySpeed={1000}
             />
           </h1>
           <p className="text-lg italic text-gray-700">
             Explore, savor, and create with us! Taste the world, one dish at a
             time. Let's cook up some memories together. Discover your inner chef
-            with our food inspiration. Join the TasteMates community and satisfy
+            with our food inspiration. Join the Chef's catalog community and satisfy
             your cravings.
           </p>
 
