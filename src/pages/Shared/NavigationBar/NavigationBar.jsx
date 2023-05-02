@@ -3,7 +3,7 @@ import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
   return (
-    <div className="container mx-auto navbar pt-10">
+    <div className="container mx-auto navbar bg-transparent py-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
