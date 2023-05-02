@@ -52,7 +52,8 @@ const NavigationBar = () => {
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
         </ul>
-         <button className="btn-outline">Login</button>
+         <button className="btn-outline mr-5">Login</button>
+         <button className="btn-solid ">Sign up</button>
       </div>
     </div>
   );
