@@ -1,5 +1,6 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ChefsCard = ({ chef }) => {
   const { id, chefPicture, chefName, experience, numRecipes, likes } = chef;
@@ -22,7 +23,9 @@ const ChefsCard = ({ chef }) => {
             <FaThumbsUp className="text-2xl" />
             <span>{likes}</span>
           </div>
-          <button className="btn-outline">View Recipes</button>
+          <Link to={`/chefRecipe/${id}`} className="btn-outline">
+            View Recipes
+          </Link>
         </div>
       </div>
     </div>
