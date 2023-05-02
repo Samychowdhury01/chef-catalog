@@ -16,7 +16,7 @@ const Header = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-8">
         <div className="mt-10 md:mt-0">
           <h1 className="h-[100px] text-2xl md:text-5xl text-orange-400 font-bold py-8 mb-8">
-            {/* Style will be inherited from the parent element */}
+          
             <Typewriter
               words={["Chef's Catalog - Discover the Joy of Cooking"]}
               loop={5}
@@ -38,6 +38,8 @@ const Header = () => {
             Login
           </Link>
         </div>
+
+        {/* slider of the chefs */}
         <div>
           <div ref={sliderRef} className="keen-slider">
             <div className="keen-slider__slide number-slide1">

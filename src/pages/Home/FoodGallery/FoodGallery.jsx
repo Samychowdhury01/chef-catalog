@@ -1,9 +1,9 @@
 import React from "react";
-import food1 from "../../../../assets/images/food-1.png";
-import food2 from "../../../../assets/images/food-2.png";
-import food3 from "../../../../assets/images/food-3.png";
-import food4 from "../../../../assets/images/food-4.png";
-import food5 from "../../../../assets/images/food-5.png";
+import food1 from "../../../assets/images/food-1.png";
+import food2 from "../../../assets/images/food-2.png";
+import food3 from "../../../assets/images/food-3.png";
+import food4 from "../../../assets/images/food-4.png";
+import food5 from "../../../assets/images/food-5.png";
 const FoodGallery = () => {
   return (
     <div className="mt-24">

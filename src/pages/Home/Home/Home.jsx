@@ -2,27 +2,45 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefsCard from "../ChefsCard/ChefsCard";
 import Header from "../Header/Header";
-import FoodGallery from "./FoodGallery/FoodGallery";
+import FoodGallery from "../FoodGallery/FoodGallery";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import NewsLetter from "../NewsLetter/NewsLetter";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true); // Add a state variable to keep track of loading state
   const chefData = useLoaderData();
-  console.log(chefData);
+
+  useEffect(() => {
+    setLoading(false); // Set loading state to false after the data has been loaded
+  }, [chefData]);
 
   return (
+    // Header of home page
     <div className="container mx-auto">
       <Header />
+
+      {/* chefs card section */}
       <div className="mt-24">
         <h1 className="text-center text-5xl font-bold text-orange-400 mb-5">
           Meet our Chefs
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-0">
-          {chefData.map((chef) => (
-            <ChefsCard key={chef.id} chef={chef}></ChefsCard>
-          ))}
-        </div>
+        {/* Conditionally render the spinner component */}
+        {loading ? (
+          <LoadingSpinner/>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 md:px-0">
+            {chefData.map((chef) => (
+              <ChefsCard key={chef.id} chef={chef}></ChefsCard>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* recipe gallery section */}
+      <div>
+        <FoodGallery />
       </div>
       <div>
-        <FoodGallery/>
+        <NewsLetter />
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
-import LazyLoad from "react-lazy-load";
 
 const ChefsCard = ({ chef }) => {
   const { id, chefPicture, chefName, experience, numRecipes, likes } = chef;
