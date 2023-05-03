@@ -14,9 +14,12 @@ const ChefRecipe = () => {
     },[])
     
     return (
-        <div>
+        <div className='p-5 md:p-0'>
+
             <ChefDetails chefData={chefData}/>
-            <div>
+            
+            <div className='mt-24'>
+                <h1 className='text-5xl font-extrabold text-center'>Recipes</h1>
                 {
                     recipes.map((recipe) => <RecipeCard
                     key={recipe.id}
