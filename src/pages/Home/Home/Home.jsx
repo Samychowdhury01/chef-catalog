@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import ChefsCard from "../ChefsCard/ChefsCard";
 import Header from "../Header/Header";
 import FoodGallery from "../FoodGallery/FoodGallery";
-import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+
 import NewsLetter from "../NewsLetter/NewsLetter";
 
 const Home = () => {

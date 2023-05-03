@@ -1,5 +1,7 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Link } from "react-router-dom";
 
 const ChefsCard = ({ chef }) => {
@@ -7,7 +9,12 @@ const ChefsCard = ({ chef }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-xl ">
       <figure>
-        <img className="p-5" src={chefPicture} alt="Chef's photo" />
+      <LazyLoadImage
+        alt="Chef's photo"
+        effect="blur"
+        src={chefPicture}
+        className="p-5"
+      />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{chefName}</h2>
