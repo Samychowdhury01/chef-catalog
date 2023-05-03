@@ -9,7 +9,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('wrong password')
     const [showPassword, setShowPassword] = useState(false)
   return (
-<div className="p-5 md:p-0">
+<div className="p-5 md:p-0 ">
 <div className="md:container md:mx-auto flex flex-col-reverse md:flex-row  items-center border-amber-200 border-2 rounded-2xl shadow-2xl p-10">
       {/* form  */}
       <div className="md:w-1/3">

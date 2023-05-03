@@ -3,7 +3,7 @@ import subscribe from "../../../assets/images/subscribe.png";
 
 const NewsLetter = () => {
   return (
-    <div className="bg-orange-100 rounded-2xl mt-24 flex flex-col md:flex-row items-center justify-end drop-shadow-xl">
+    <div className="bg-orange-100 rounded-2xl my-24 flex flex-col md:flex-row items-center justify-end drop-shadow-xl">
       <img className="md:w-1/2" src={subscribe} alt="Newsletter image" />
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">Subscribe To Our Newsletter</h1>
