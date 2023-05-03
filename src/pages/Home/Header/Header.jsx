@@ -15,7 +15,7 @@ const Header = () => {
     <div className="container mx-auto flex items-center justify-center h-[100vh] md:h-[60vh] bg-orange-100 bg-opacity-70 rounded-lg drop-shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-8">
         <div className="mt-10 md:mt-0">
-          <h1 className="h-[100px] text-2xl md:text-5xl text-orange-400 font-bold py-8 mb-8">
+          <h1 className="h-[170px] text-2xl md:text-5xl text-orange-400 font-bold py-8 mb-5">
           
             <Typewriter
               words={["Chef's Catalog - Discover the Joy of Cooking"]}

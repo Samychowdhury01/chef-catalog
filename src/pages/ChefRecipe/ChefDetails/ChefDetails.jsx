@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -6,6 +6,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 const ChefDetails = ({ chefData }) => {
   const { chefName, bio, chefPicture, likes, experience, numRecipes } =
     chefData;
+
   return (
     <div className="md:container md:mx-auto hero min-h-[50vh] bg-orange-100 md:p-10 shadow-2xl rounded-xl">
       <div className="hero-content flex-col lg:flex-row gap-14">
