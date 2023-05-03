@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
@@ -52,8 +53,10 @@ const NavigationBar = () => {
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
         </ul>
-         <button className="btn-outline mr-5">Login</button>
-         <button className="btn-solid ">Sign up</button>
+         <div>
+         <Link to='/login' className="btn-outline mr-5">Login</Link>
+         <Link to='/register' className="btn-solid ">Sign up</Link>
+         </div>
       </div>
     </div>
   );
