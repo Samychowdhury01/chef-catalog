@@ -18,7 +18,10 @@ const Register = () => {
   };
 
   return (
-    <div style={bgStyle} className="flex justify-center items-center p-8 md:p-0">
+    <div
+      style={bgStyle}
+      className="flex justify-center items-center p-8 md:p-0"
+    >
       <div className="md:container md:mx-auto rounded-2xl shadow-2xl p-10 glass lg:w-1/3">
         <div className="form-control">
           <label className="label">
@@ -47,10 +50,11 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Photo URL</span>
           </label>
-          <input 
-          type="file" 
-          name="photo"
-          className="file-input file-input-bordered  w-full" />
+          <input
+            type="file"
+            name="photo"
+            className="file-input file-input-bordered  w-full"
+          />
         </div>
         <div className="form-control relative">
           <label className="label">
@@ -79,7 +83,7 @@ const Register = () => {
             </Link>
           </label>
           <label className="text-center">
-            <Link to="" className="label-text-alt text-red-500 font-semibold">
+            <Link to="" className="label-text-alt error font-semibold">
               {errorMessage}
             </Link>
           </label>
@@ -87,6 +91,17 @@ const Register = () => {
         <div className="form-control mt-6">
           <button className="btn-solid">Login</button>
         </div>
+        <label className="label">
+          <p className="label-text-alt text-base">
+            Already Have an account? 
+            <Link
+              to="/login"
+              className="link link-hover text-orange-500 font-bold ml-1"
+            >
+              Login
+            </Link>
+          </p>
+        </label>
       </div>
     </div>
   );

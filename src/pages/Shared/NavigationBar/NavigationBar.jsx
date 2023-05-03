@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
+const {user} = useContext(AuthContext)
+
+
   return (
     <div className="container mx-auto navbar bg-transparent py-10">
       <div className="navbar-start">
@@ -54,8 +58,9 @@ const NavigationBar = () => {
           </li>
         </ul>
          <div>
-         <Link to='/login' className="btn-outline mr-5">Login</Link>
-         <Link to='/register' className="btn-solid ">Sign up</Link>
+         {
+          user ? <img src='' alt="" /> : <Link to='/login' className="btn-outline mr-5">Login</Link>
+         }
          </div>
       </div>
     </div>
