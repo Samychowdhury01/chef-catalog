@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { toast } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../../../assets/images/login-bg.png";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
-  const [errorMessage, setErrorMessage] = useState("wrong password");
+  const {createUser, updateUserProfile} = useContext(AuthContext)
+  const [errorMessage, setErrorMessage] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate()
+  const location = useLocation()
 
+  // css style for register page
   const bgStyle = {
     position: "relative", // add position relative to the container
     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(${bg})`, // add linear-gradient to create a black and transparent gradient
@@ -17,8 +25,67 @@ const Register = () => {
     height: "90vh",
   };
 
+
+  // handle register with email and password
+  const handleRegister = event =>{
+    event.preventDefault()
+    const form = event.target
+    const name = form.name.value
+    const photo = form.photo.value
+    const email = form.email.value
+    const password = form.password.value
+    setPasswordError('')
+    setErrorMessage('')
+
+  // sign-up process
+    createUser(email, password)
+    .then((result) =>{
+      const createdUser = result.user
+      toast.success("You have successfully created an account")
+      updateUserData(result.user, name, photo)
+      navigate(location?.state?.pathName || '/')
+      event.target.reset()
+    })
+    .catch((error) => {
+      const errMessage = error.message;
+      if (errMessage.includes('email-already-in-use')) {
+        setErrorMessage('The email you have provided is already in use')
+      }
+    })
+  }
+
+  const updateUserData = (user, name, photo) =>{
+    updateUserProfile(user, name, photo)
+  .then(
+    console.log('success')
+  )
+  .catch(console.log('wrong'))
+  }
+
+  const handlePassword = (e) => {
+    const passwordInput = e.target.value;
+    setPassword(passwordInput);
+
+
+    if (!/(?=.*[A-Z])/.test(passwordInput)) {
+      setPasswordError("Password must contain at least one capital letter");
+    }
+    else if (!/(?=.*[0-9])/.test(passwordInput)){
+      setPasswordError("Password must contain at least one number");
+    }
+    else if (!/(?=.*[!@#$%^&*])/.test(passwordInput)){
+      setPasswordError("Password must contain a special character");
+    }
+    else if (passwordInput.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+    }   else {
+      setPasswordError("");
+    }
+  };
+
   return (
-    <div
+    <form
+    onSubmit={handleRegister}
       style={bgStyle}
       className="flex justify-center items-center p-8 md:p-0"
     >
@@ -65,6 +132,8 @@ const Register = () => {
             name="password"
             placeholder="password"
             className="input input-bordered"
+            onChange={handlePassword}
+            value={password}
             required
           />
           <div
@@ -77,19 +146,19 @@ const Register = () => {
               <FaEyeSlash className="w-6 h-6" />
             )}
           </div>
-          <label className="label">
-            <Link to="" className="label-text-alt link link-hover">
-              Forgot password?
+          <label className="text-center">
+            <Link to="" className={`label-text-alt ${errorMessage ? 'error' : ''} font-semibold`}>
+              {errorMessage}
             </Link>
           </label>
           <label className="text-center">
-            <Link to="" className="label-text-alt error font-semibold">
-              {errorMessage}
+            <Link to="" className={`label-text-alt ${passwordError ? 'error' : ''} font-semibold`}>
+              {passwordError}
             </Link>
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn-solid">Login</button>
+          <button className="btn-solid">Sign up</button>
         </div>
         <label className="label">
           <p className="label-text-alt text-base">
@@ -103,7 +172,7 @@ const Register = () => {
           </p>
         </label>
       </div>
-    </div>
+    </form>
   );
 };
 

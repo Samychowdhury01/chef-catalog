@@ -1,11 +1,23 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
-const {user} = useContext(AuthContext)
+const {user, logOut} = useContext(AuthContext)
 
+
+const handleLogout = () =>{
+  logOut()
+  .then(
+    toast.success('Logout Successful')
+  )
+  .catch((error) =>{
+    toast.error('something is wrong, Try again!')
+  })
+}
 
   return (
     <div className="container mx-auto navbar bg-transparent py-10">
@@ -37,9 +49,18 @@ const {user} = useContext(AuthContext)
           <li className="mr-2">
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
-          <li className="mr-2">
-          <button className="btn-outline">Login</button>
-          </li>
+          <div className="tooltip" data-tip={`${user?.displayName || ''}`}>
+         <div className="bg-red-500">
+         {
+          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14 bg-green-200"  />
+         }
+         </div>
+         </div>
+         <div>
+        {
+          user ? <button onClick={handleLogout} className="btn btn-sm rounded-2xl ml-2">logout</button> : <Link to='/login' className="btn-outline mr-5">Login</Link>
+         }
+        </div>
           </ul>
           
         </div>
@@ -57,11 +78,18 @@ const {user} = useContext(AuthContext)
             <ActiveLink to="/blog">Blog</ActiveLink>
           </li>
         </ul>
-         <div>
+        <div className="tooltip" data-tip={`${user?.displayName || ''}`}>
+         <div className="bg-red-500">
          {
-          user ? <img src='' alt="" /> : <Link to='/login' className="btn-outline mr-5">Login</Link>
+          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14 bg-green-200"  />
          }
          </div>
+         </div>
+         <div>
+        {
+          user ? <button onClick={handleLogout} className="btn btn-sm rounded-2xl ml-2">logout</button> : <Link to='/login' className="btn-outline mr-5">Login</Link>
+         }
+        </div>
       </div>
     </div>
   );

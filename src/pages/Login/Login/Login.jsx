@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { signInWithGoogle, signInWithGithub } = useContext(AuthContext);
-  const [errorMessage, setErrorMessage] = useState("wrong password");
+  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   // handler for google sign in 
@@ -38,11 +38,19 @@ const Login = () => {
     })
   }
 
+  //handle  login with email and password
+  const handleLogin = event =>{
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+  }
+
   return (
     <div className="p-5 md:p-0 ">
       <div className="md:container md:mx-auto flex flex-col-reverse md:flex-row  items-center border-amber-200 border-2 rounded-2xl shadow-2xl p-10">
         {/* form  */}
-        <div className="md:w-1/3">
+        <form onSubmit={handleLogin} className="md:w-1/3">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -82,9 +90,9 @@ const Login = () => {
               </Link>
             </label>
             <label className="text-center">
-              <Link to="" className="label-text-alt error font-semibold">
-                {errorMessage}
-              </Link>
+            <Link to="" className={`label-text-alt ${errorMessage ? 'error' : ''} font-semibold`}>
+              {errorMessage}
+            </Link>
             </label>
           </div>
           <div className="form-control mt-6">
@@ -113,16 +121,16 @@ const Login = () => {
             </div>
           </div>
           <div>
-            <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-2 mt-8 py-3 border-2 rounded-lg cursor-pointer">
+            <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-2 mt-8 py-3 border-2 rounded-3xl cursor-pointer">
               <FcGoogle className="text-3xl" />
               <span className="text-base">Continue with Google</span>
             </div>
-            <div onClick={handleGithubSignIn} className="flex items-center justify-center gap-2 mt-5 py-3 border-2 rounded-lg cursor-pointer">
+            <div onClick={handleGithubSignIn} className="flex items-center justify-center gap-2 mt-5 py-3 border-2 rounded-3xl cursor-pointer">
               <FaGithub className="text-3xl" />
               <span className="text-base">Continue with Github</span>
             </div>
           </div>
-        </div>
+        </form>
         <div className="md:w-2/3">
           <LazyLoadImage alt="Login-image" effect="blur" src={loginImage} />
         </div>
