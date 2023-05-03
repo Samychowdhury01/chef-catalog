@@ -10,7 +10,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { signInWithGoogle, signInWithGithub, loginWithEmail } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,6 +44,26 @@ const Login = () => {
     const form = event.target
     const email = form.email.value
     const password = form.password.value
+    setErrorMessage('')
+
+    loginWithEmail(email, password)
+    .then(result =>{
+      toast.success('Login Successful')
+      event.target.reset()
+    })
+    .catch(error => {
+      console.log(error.message)
+      const message = error.message
+      if(message.includes('wrong-password')){
+        setErrorMessage('Wrong password. Try again!!')
+        return
+      }
+      else if(message.includes('user-not-found')){
+        setErrorMessage('this is not a valid email')
+        return
+      }
+    })
+
   }
 
   return (

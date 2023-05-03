@@ -12,8 +12,6 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
-  const navigate = useNavigate()
-  const location = useLocation()
 
   // css style for register page
   const bgStyle = {
@@ -43,13 +41,13 @@ const Register = () => {
       const createdUser = result.user
       toast.success("You have successfully created an account")
       updateUserData(result.user, name, photo)
-      navigate(location?.state?.pathName || '/')
       event.target.reset()
     })
     .catch((error) => {
       const errMessage = error.message;
       if (errMessage.includes('email-already-in-use')) {
         setErrorMessage('The email you have provided is already in use')
+        return
       }
     })
   }
