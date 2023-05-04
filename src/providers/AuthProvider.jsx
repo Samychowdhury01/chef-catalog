@@ -47,13 +47,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // update profile
-  const updateUserProfile = (name, photoUrl) => {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photoUrl,
-    });
-  };
 
   // sign-out user
   const logOut = () => {
@@ -73,11 +66,11 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     signInWithGoogle,
     signInWithGithub,
     createUser,
     loginWithEmail,
-    updateUserProfile,
     logOut,
   };
   return (

@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import ActiveLink from "./ActiveLink";
 
 const NavigationBar = () => {
 const {user, logOut} = useContext(AuthContext)
+
 
 
 const handleLogout = () =>{
@@ -79,9 +79,9 @@ const handleLogout = () =>{
           </li>
         </ul>
         <div className="tooltip" data-tip={`${user?.displayName || ''}`}>
-         <div className="bg-red-500">
+         <div>
          {
-          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14 bg-green-200"  />
+          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14"  />
          }
          </div>
          </div>
