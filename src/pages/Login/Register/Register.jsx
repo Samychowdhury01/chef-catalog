@@ -35,7 +35,7 @@ const Register = () => {
     const photo = form.photo.value
     const email = form.email.value
     const password = form.password.value
-    console.log(name)
+  
     setPasswordError('')
     setErrorMessage('')
 
@@ -46,21 +46,6 @@ const Register = () => {
       const createdUser = result.user
       toast.success("You have successfully created an account")
       navigate(location?.state?.from?.pathname || '/')
-  
-       /*  updateProfile(createdUser, {
-          displayName: name, photoURL: photo
-        }).then(() => {
-          // Profile updated!
-          // ...
-          console.log('updated profile')
-        }).catch((error) => {
-          // An error occurred
-          // ...
-          console.log('profile update error')
-        }); */
-      
-
-
       event.target.reset()
     })
     .catch((error) => {
@@ -72,15 +57,6 @@ const Register = () => {
     })
   }
 
-  // update user data
-/* 
-  const updateUserData = (name, photo) =>{
-    updateUserProfile(name, photo)
-  .then(
-    console.log('successfully updated user name photo')
-  )
-  .catch(console.log('update hoy nai'))
-  } */
 
 
   const handlePassword = (e) => {

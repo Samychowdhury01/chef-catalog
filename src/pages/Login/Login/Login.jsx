@@ -35,7 +35,6 @@ const Login = () => {
       toast.success("Login successful")
     })
     .catch((error)=> {
-      console.log(error.message)
       toast.error(`${error.message}`)
     })
   }
@@ -55,7 +54,6 @@ const Login = () => {
       event.target.reset()
     })
     .catch(error => {
-      console.log(error.message)
       const message = error.message
       if(message.includes('wrong-password')){
         setErrorMessage('Wrong password. Try again!!')
