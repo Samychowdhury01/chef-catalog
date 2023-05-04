@@ -12,6 +12,8 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
+  const location = useLocation()
+  const navigate = useNavigate()
 
   // css style for register page
   const bgStyle = {
@@ -40,7 +42,12 @@ const Register = () => {
     .then((result) =>{
       const createdUser = result.user
       toast.success("You have successfully created an account")
-      updateUserData(result.user, name, photo)
+      navigate(location?.state?.from?.pathname || '/')
+
+      // updating here
+      updateUserData(name, photo)
+
+
       event.target.reset()
     })
     .catch((error) => {
@@ -52,13 +59,16 @@ const Register = () => {
     })
   }
 
-  const updateUserData = (user, name, photo) =>{
-    updateUserProfile(user, name, photo)
+  // update user data
+
+  const updateUserData = (name, photo) =>{
+    updateUserProfile(name, photo)
   .then(
-    console.log('success')
+    console.log('successfully updated user name photo')
   )
-  .catch(console.log('wrong'))
+  .catch(console.log('update hoy nai'))
   }
+
 
   const handlePassword = (e) => {
     const passwordInput = e.target.value;

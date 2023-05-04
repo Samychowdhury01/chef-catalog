@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../../assets/images/login-bg-2.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -13,6 +13,8 @@ const Login = () => {
   const { signInWithGoogle, signInWithGithub, loginWithEmail } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   // handler for google sign in 
   const handleGoogleSignIn = () =>{
@@ -49,6 +51,7 @@ const Login = () => {
     loginWithEmail(email, password)
     .then(result =>{
       toast.success('Login Successful')
+      navigate(location?.state?.from?.pathname || '/')
       event.target.reset()
     })
     .catch(error => {
