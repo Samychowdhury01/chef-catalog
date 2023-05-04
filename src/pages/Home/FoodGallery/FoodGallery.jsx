@@ -3,7 +3,7 @@ import food1 from "../../../assets/images/food-1.png";
 import food2 from "../../../assets/images/food-2.png";
 import food3 from "../../../assets/images/food-3.png";
 import food4 from "../../../assets/images/food-4.png";
-import food5 from "../../../assets/images/food-5.png";
+import food5 from "../../../assets/images/food-6.jpg";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 const FoodGallery = () => {
