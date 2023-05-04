@@ -35,7 +35,7 @@ const Header = () => {
           </p>
 
           <Link to="/login" className="btn-solid mt-5">
-            Login
+            Explore New Recipes
           </Link>
         </div>
 
