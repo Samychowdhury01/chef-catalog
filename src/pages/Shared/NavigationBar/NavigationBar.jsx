@@ -47,12 +47,12 @@ const handleLogout = () =>{
             <ActiveLink to="/">Home</ActiveLink>
           </li>
           <li className="mr-2">
-            <ActiveLink to="/blog">Blog</ActiveLink>
+            <ActiveLink to="/blogs">Blogs</ActiveLink>
           </li>
           <div className="tooltip" data-tip={`${user?.displayName || ''}`}>
-         <div className="bg-red-500">
+         <div>
          {
-          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14 bg-green-200"  />
+          user && <img src={user?.photoURL} alt="profile-photo" className="rounded-full w-14 h-14"  />
          }
          </div>
          </div>
@@ -75,7 +75,7 @@ const handleLogout = () =>{
             <ActiveLink to="/">Home</ActiveLink>
           </li>
           <li className="mr-2">
-            <ActiveLink to="/blog">Blog</ActiveLink>
+            <ActiveLink to="/blogs">Blogs</ActiveLink>
           </li>
         </ul>
         <div className="tooltip" data-tip={`${user?.displayName || ''}`}>

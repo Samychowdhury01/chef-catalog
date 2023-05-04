@@ -1,15 +1,14 @@
-import { getAuth, updateProfile } from "firebase/auth";
+
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../../../assets/images/login-bg.png";
-import app from "../../../firebase/firebase.config";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
-  const {createUser, updateUserProfile, user} = useContext(AuthContext)
+  const {createUser, updateUserProfile} = useContext(AuthContext)
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +29,6 @@ const Register = () => {
 
   // handle register with email and password
   const handleRegister = event =>{
-    const auth = getAuth(app)
     event.preventDefault()
     const form = event.target
     const name = form.name.value
@@ -44,11 +42,12 @@ const Register = () => {
   // sign-up process
     createUser(email, password)
     .then((result) =>{
+      updateUserProfile(name, photo)
       const createdUser = result.user
       toast.success("You have successfully created an account")
       navigate(location?.state?.from?.pathname || '/')
   
-        updateProfile(createdUser, {
+       /*  updateProfile(createdUser, {
           displayName: name, photoURL: photo
         }).then(() => {
           // Profile updated!
@@ -58,7 +57,7 @@ const Register = () => {
           // An error occurred
           // ...
           console.log('profile update error')
-        });
+        }); */
       
 
 

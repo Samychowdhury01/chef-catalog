@@ -8,7 +8,7 @@ const ChefRecipe = () => {
     const recipes = useLoaderData()
     const [chefData, setChefData] =useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/chefData/${id}`)
+        fetch(`https://chef-catalog-server.vercel.app/chefData/${id}`)
         .then(res => res.json())
         .then(data => setChefData(data))
     },[])

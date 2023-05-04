@@ -7,7 +7,11 @@ import NavigationBar from '../pages/Shared/NavigationBar/NavigationBar';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Main = () => {
-const {loading} = useContext(AuthContext)
+const [loading, setLoading] = useState(true)
+useEffect(() =>{
+    setLoading(false)
+},[])
+/* const {loading} = useContext(AuthContext) */
     if(loading){
       return <LoadingSpinner/>
     }
