@@ -8,4 +8,4 @@
 - When the user clicks on the Favorite button, the button will toggle and then the button will be disabled.
 
 ## Live site link
-Hosted in Firebase -> [Chef's Catalog]('https://chef-s-catalog.web.app/)
+Hosted in Firebase -> [Chef's Catalog](https://chef-s-catalog.web.app/)
