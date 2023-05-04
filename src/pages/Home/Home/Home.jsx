@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import FoodGallery from "../FoodGallery/FoodGallery";
 
 import NewsLetter from "../NewsLetter/NewsLetter";
+import ReadersReview from "../ReadersReview/ReadersReview";
 
 const Home = () => {
   const chefData = useLoaderData();
@@ -28,6 +29,9 @@ const Home = () => {
       {/* recipe gallery section */}
       <div>
         <FoodGallery />
+      </div>
+      <div>
+        <ReadersReview/>
       </div>
       <div>
         <NewsLetter />
