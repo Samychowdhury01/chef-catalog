@@ -125,6 +125,7 @@ const Login = () => {
               <Link
                 to="/register"
                 className="link link-hover text-orange-500 font-bold ml-1"
+                state={location?.state}
               >
                 Sign up
               </Link>
